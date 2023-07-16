@@ -1,0 +1,352 @@
+http:
+  routers:
+    code:
+      entryPoints:
+      - https
+      rule: Host(`code.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: code-svc
+    deluge:
+      entryPoints:
+      - https
+      rule: Host(`deluge.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: deluge-svc
+    grafana:
+      entryPoints:
+      - https
+      rule: Host(`grafana.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: grafana-svc
+    guac:
+      entryPoints:
+      - https
+      rule: Host(`guac.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: guac-svc
+    ipmi:
+      entryPoints:
+      - https
+      rule: Host(`ipmi.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: ipmi-svc
+    libre-nms:
+      entryPoints:
+      - https
+      rule: Host(`librenms.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: libre-nms-svc
+    music:
+      entryPoints:
+      - https
+      rule: Host(`music.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      - securityHeaders
+      service: music-svc
+    openwrt:
+      entryPoints:
+      - https
+      rule: Host(`openwrt.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: openwrt-svc
+    paste:
+      entryPoints:
+      - https
+      rule: Host(`paste.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: paste-svc
+    pdf:
+      entryPoints:
+      - https
+      rule: Host(`pdf.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: pdf-svc
+    pfsense:
+      entryPoints:
+      - https
+      rule: Host(`pfsense.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: pfsense-svc
+    pihole:
+      entryPoints:
+      - https
+      rule: Host(`pihole.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: pihole-svc
+    plex:
+      entryPoints:
+      - https
+      rule: Host(`plex.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: plex-svc
+    pve:
+      entryPoints:
+      - https
+      rule: Host(`pve.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: pve-svc
+    r710:
+      entryPoints:
+      - https
+      rule: Host(`r710.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: r710-svc
+    r820:
+      entryPoints:
+      - https
+      rule: Host(`r820.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: r820-svc
+    rancher:
+      entryPoints:
+      - https
+      rule: Host(`rancher.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: rancher-svc
+    sabnzbd:
+      entryPoints:
+      - https
+      rule: Host(`sabnzbd.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: sabnzbd-svc
+    traefik-ext:
+      entryPoints:
+      - https
+      rule: Host(`traefik-ext.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: traefik-ext-svc
+    traefik-int:
+      entryPoints:
+      - https
+      rule: Host(`traefik-int.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: traefik-int-svc
+    unifi:
+      entryPoints:
+      - https
+      rule: Host(`unifi.mydomain.com`)
+      middlewares:
+      - unifiHeaders
+      - chain-no-auth
+      tls: {}
+      service: unifi-svc
+    unraid:
+      entryPoints:
+      - https
+      rule: Host(`unraid.mydomain.com`)
+      middlewares:
+      - chain-no-auth
+      tls: {}
+      service: unraid-svc
+  services:
+    code-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:28443/"'
+        passHostHeader: true
+    deluge-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:8112/"'
+        passHostHeader: true
+    grafana-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:3300/"'
+        passHostHeader: true
+    guac-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:980/"'
+        passHostHeader: true
+    ipmi-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.99.97/"'
+        passHostHeader: true
+    ldap-svc:
+      loadBalancer:
+        servers:
+        - url: '"https://10.10.2.22:443/"'
+        passHostHeader: true
+    libre-nms-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:6980/"'
+        passHostHeader: true
+    music-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:4533/"'
+        passHostHeader: true
+    openwrt-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.95/"'
+    paste-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:8280/"'
+        passHostHeader: true
+    pdf-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:8180/"'
+        passHostHeader: true
+    pfsense-svc:
+      loadBalancer:
+        servers:
+        - url: '"https://10.10.0.1:443/"'
+        passHostHeader: true
+    pihole-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.10.10/"'
+        passHostHeader: true
+    plex-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:32800/"'
+        passHostHeader: true
+    pve-svc:
+      loadBalancer:
+        servers:
+        - url: '"https://10.10.0.29:8006/"'
+        passHostHeader: true
+    r710-svc:
+      loadBalancer:
+        servers:
+        - url: '"https://10.10.99.99/"'
+        passHostHeader: true
+    r820-svc:
+      loadBalancer:
+        servers:
+        - url: '"https://10.10.99.98/"'
+        passHostHeader: true
+    rancher-svc:
+      loadBalancer:
+        servers:
+        - url: '"https://10.10.0.81/"'
+        passHostHeader: true
+    sabnzbd-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:8085/"'
+        passHostHeader: true
+    traefik-ext-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:8282/"'
+        passHostHeader: true
+    traefik-int-svc:
+      loadBalancer:
+        servers:
+        - url: '"http://10.10.0.8:8185/"'
+        passHostHeader: true
+    unifi-svc:
+      loadBalancer:
+        serversTransport: mytransport
+        servers:
+        - url: '"https://10.10.0.8:8443/"'
+        passHostHeader: true
+    unraid-svc:
+      loadBalancer:
+        servers:
+        - url: '"https://10.10.0.8:4443/"'
+        passHostHeader: true
+  middlewares:
+    rate-limit:
+      rateLimit:
+        average: 100
+        burst: 50
+    securityHeaders:
+      headers:
+        accessControlAllowMethods:
+        - GET
+        - OPTIONS
+        - PUT
+        hostsProxyHeaders:
+        - X-Forwarded-Host
+        stsSeconds: 63072000
+        stsIncludeSubdomains: true
+        stsPreload: true
+        forceSTSHeader: true
+        customFrameOptionsValue: SAMEORIGIN
+        contentTypeNosniff: true
+        browserXssFilter: true
+        referrerPolicy: same-origin
+        permissionsPolicy: camera=(), microphone=(), geolocation=(), payment=(), usb=(),
+          vr=()
+        customResponseHeaders:
+          X-Robots-Tag: none,noarchive,nosnippet,notranslate,noimageindex,
+          X-Forwarded-Proto: https
+          server: ''
+        sslProxyHeaders:
+          X-Forwarded-Proto: https
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+    unifiHeaders:
+      headers:
+        stsSeconds: 315360000
+        browserXSSFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        STSIncludeSubdomains: true
+        STSPreload: true
+        frameDeny: true
+        accessControlAllowCredentials: true
+    chain-no-auth:
+      chain:
+        middlewares:
+        - rate-limit
+        - securityHeaders
+tls:
+  options:
+    default:
+      minVersion: VersionTLS12
+      cipherSuites:
+      - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+      - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+      - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+      - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+      - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+      - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
